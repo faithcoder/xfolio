@@ -1,0 +1,127 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'); /* Common Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-size: 100%;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Inter;
+}
+
+.inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+/* Remove list styles */
+ul, ol {
+    list-style: none;
+}
+
+/* Remove text decorations for links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Set box-sizing to border-box */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin from heading tags */
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+/* Remove default padding and margin from paragraph */
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Table reset */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Image resets */
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* Button resets */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+input, textarea {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+
+.xfolio-header, .xfolio-footer {
+    max-width: 840px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .xfolio-header{
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border-radius: 48px;
+  }
+  
+  .main-wrapper {
+    max-width: 700px;
+    margin: 20px auto;
+  }
+
+  .xfolio-flex{
+    display: flex;
+    justify-content: space-between;
+
+  }
+  
+  .exfolio-main-menu ul {
+    
+  }
+  .exfolio-main-menu ul li {
+    display: inline-block;
+    margin-right: 30px;
+    position: relative;
+  }
+  .exfolio-main-menu ul li:last-child{
+    margin-right: 0;
+  }
+
+  .exfolio-main-menu ul li:not(:last-child)::after{
+    content: '';
+    position: absolute;
+    background: #0000004D;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    top: 10px;
+    right: -20px;
+    
+  }
