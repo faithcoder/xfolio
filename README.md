@@ -1,0 +1,1 @@
+Xfolio Theme is a simple, lightweight Portfolio WordPress theme following the classic theme structure, with essential features and a clean, minimal design. The theme includes a custom header, footer, and a main wrapper for content, with assets managed in a dedicated folder for CSS and JavaScript files.
