@@ -1,58 +1,55 @@
-
 <div class="main-wrapper">
 
+	<div class="xfolio-posts">
+		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-		endif;
-
-		if ( 'post' === get_post_type() ) :
+			<?php
+			// Display the post thumbnail (featured image)
+			if ( has_post_thumbnail() ) :
+				xfolio_post_thumbnail();
+			endif;
 			?>
-			<div class="entry-meta">
+
+			<header class="entry-header">
 				<?php
-				xfolio_posted_on();
-				xfolio_posted_by();
+				// Display the title differently for single posts and blog list
+				if ( is_singular() ) :
+					the_title( '<h1 class="xfolio-single-post-title">', '</h1>' );
+				else :
+					the_title( '<h2 class="xfolio-post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+				endif;
 				?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+			</header><!-- .entry-header -->
 
-	<?php xfolio_post_thumbnail(); ?>
+			<?php if ( is_singular() ) : ?>
+				<div class="entry-content">
+					<?php
+					// Display the full content on single post pages
+					the_content(
+						sprintf(
+							wp_kses(
+								__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'xfolio' ),
+								array(
+									'span' => array(
+										'class' => array(),
+									),
+								)
+							),
+							wp_kses_post( get_the_title() )
+						)
+					);
 
-	<div class="entry-content">
-		<?php
-		the_content(
-			sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'xfolio' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				wp_kses_post( get_the_title() )
-			)
-		);
-
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'xfolio' ),
-				'after'  => '</div>',
-			)
-		);
-		?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-footer">
-		<?php xfolio_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
-
+					// Pagination for multi-page posts
+					wp_link_pages(
+						array(
+							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'xfolio' ),
+							'after'  => '</div>',
+						)
+					);
+					?>
+				</div><!-- .entry-content -->
+			<?php endif; ?>
+			
+		</article><!-- #post-<?php the_ID(); ?> -->
+	</div>
 </div>

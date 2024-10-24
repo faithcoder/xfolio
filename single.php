@@ -1,39 +1,78 @@
 <?php
-/**
- * The template for displaying all single posts
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
- *
- * @package Xfolio
- */
 
 get_header();
 ?>
+<div class="xfolio-social-share">
+<span>share</span>
+        <!-- Facebook -->
+        <a href="#<?php echo urlencode( get_permalink() ); ?>" target="_blank" class="social-icon facebook">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/link.png" alt="Share on Facebook" />
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode( get_permalink() ); ?>" target="_blank" class="social-icon facebook">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/facebook.png" alt="Share on Facebook" />
+        </a>
 
-	<main id="primary" class="site-main">
+        <!-- Twitter -->
+        <a href="https://twitter.com/intent/tweet?text=<?php echo urlencode( get_the_title() ); ?>&url=<?php echo urlencode( get_permalink() ); ?>" target="_blank" class="social-icon twitter">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/twitter.png" alt="Share on Twitter" />
+        </a>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo urlencode( get_permalink() ); ?>" target="_blank" class="social-icon linkedin">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/linkedin.png" alt="Share on LinkedIn" />
+        </a>
+    </div>
+<main id="primary" class="main-wrapper">
+<div class="xfolio-post-details">
+    <?php
+    while ( have_posts() ) :
+        the_post();
+    ?>
 
-			get_template_part( 'template-parts/content', get_post_type() );
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'xfolio' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'xfolio' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
+            <!-- Post Date -->
+            <div class="xfolio-post-date">
+                <?php echo get_the_date(); ?>
+            </div>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+            <!-- Post Title -->
+            <header class="entry-header">
+                <?php
+                the_title( '<h1 class="xfolio-single-post-title">', '</h1>' );
+                ?>
+            </header><!-- .entry-header -->
 
-		endwhile; // End of the loop.
-		?>
+            <!-- Featured Image -->
+            <?php if ( has_post_thumbnail() ) : ?>
+                <div class="xfolio-post-thumbnail">
+                    <?php the_post_thumbnail(); ?>
+                </div>
+            <?php endif; ?>
 
-	</main><!-- #main -->
+            <!-- Post Content -->
+            <div class="xfolio-entry-content">
+                <?php
+                the_content();
+
+                // Optional: If the post has multiple pages, show pagination
+                wp_link_pages(
+                    array(
+                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'xfolio' ),
+                        'after'  => '</div>',
+                    )
+                );
+                ?>
+            </div><!-- .entry-content -->
+
+        </article><!-- #post-<?php the_ID(); ?> -->
+
+    <?php
+    endwhile; // End of the loop.
+    ?>
+</div>
+</main><!-- #main -->
 
 <?php
 get_sidebar();

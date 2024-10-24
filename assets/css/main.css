@@ -6,6 +6,18 @@
     box-sizing: border-box;
 }
 
+:root {
+  --primary-color: #000000;    /* Black */
+  --secondary-color: #000000B2; /* 70% */
+  --third-color: #00000099;   /* 60% */
+  --fourth-color: #00000066;   /* 40% */   
+  --background-color: #f1f1f1; /* Light Gray */
+  --heading-color: #1d1d1d;    /* Almost Black */
+  --border-color: #dddddd;     /* Light Border */
+}
+
+
+
 html, body {
     height: 100%;
     font-size: 100%;
@@ -21,6 +33,7 @@ html, body {
   font-weight: <weight>;
   font-style: normal;
 }
+
 
 /* Remove list styles */
 ul, ol {
@@ -118,10 +131,73 @@ input, textarea {
     content: '';
     position: absolute;
     background: #0000004D;
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     border-radius: 50%;
     top: 10px;
     right: -20px;
     
+  }
+
+  /* POST STYLES */
+
+  .xfolio-posts{
+    margin: 60px 0;
+  }
+
+  h2.xfolio-post-title{
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    color: #000;
+    margin-top: 10px;
+  }
+  h1.xfolio-single-post-title{
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    color: #000;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    display: block;
+  }
+.xfolio-post-date{
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--third-color);
+}
+  .xfolio-post-details{
+    margin: 60px 0;
+  }
+  .xfolio-entry-content{
+    font-size: 18px;
+    color: var(--primary-color);
+  }
+  .xfolio-post-thumbnail{
+    margin: 30px 0;
+  }
+
+  .xfolio-social-share {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    /* Position the social icons on the left side */
+    position: fixed;
+    top: 50%;
+    left: 18%;
+    transform: translateY(-50%); /* Center the icons vertically */
+}
+  .xfolio-social-share span{
+    font-size: 10px;
+    text-transform: uppercase;
+    color: var(--fourth-color);
+    font-weight: 500;
+  }
+  .xfolio-social-share a{}
+  .xfolio-social-share a img{
+    width: 16px;
   }
