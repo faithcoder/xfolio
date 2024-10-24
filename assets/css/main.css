@@ -142,7 +142,8 @@ input, textarea {
   /* POST STYLES */
 
   .xfolio-posts{
-    margin: 60px 0;
+    margin-top: 30px;
+    margin-bottom: 60px;
   }
 
   h2.xfolio-post-title{
@@ -201,3 +202,46 @@ input, textarea {
   .xfolio-social-share a img{
     width: 16px;
   }
+
+  .xfolio-page-title{
+    font-size: 64px;
+    color: var(--primary-color);
+    font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  /* Footer Styles */
+.xfolio-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px 0;
+  border-top: 1px solid #000;
+}
+.contact-info a{
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-color);
+}
+.xfolio-footer-social-share{}
+.xfolio-footer-social-share ul{
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.xfolio-footer-social-share ul li{
+  
+}
+.xfolio-footer-social-share ul li a{
+  display: block;
+}
+
+.xfolio-footer-social-share ul li a img{
+  width: 16px;
+}
+

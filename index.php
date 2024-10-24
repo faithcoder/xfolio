@@ -5,9 +5,9 @@ get_header();
 
 	<main id="primary" class="main-wrapper">
 	<?php if ( is_home() || is_archive() ) : ?>
-        <h1 class="page-title">Articles</h1>
+        <h1 class="xfolio-page-title">Articles</h1>
     <?php endif; ?>
-	
+
 		<?php
 		if ( have_posts() ) :
 

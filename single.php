@@ -4,7 +4,7 @@ get_header();
 ?>
 <div class="xfolio-social-share">
 <span>share</span>
-        <!-- Facebook -->
+        <!-- Link -->
         <a href="#<?php echo urlencode( get_permalink() ); ?>" target="_blank" class="social-icon facebook">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/link.png" alt="Share on Facebook" />
         </a>
