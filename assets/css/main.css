@@ -16,8 +16,6 @@
   --border-color: #dddddd;     /* Light Border */
 }
 
-
-
 html, body {
     height: 100%;
     font-size: 100%;
@@ -34,37 +32,29 @@ html, body {
   font-style: normal;
 }
 
-
-/* Remove list styles */
 ul, ol {
     list-style: none;
 }
 
-/* Remove text decorations for links */
 a {
     text-decoration: none;
     color: inherit;
 }
 
-/* Set box-sizing to border-box */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* Remove default margin from heading tags */
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
-    font-weight: normal;
 }
 
-/* Remove default padding and margin from paragraph */
 p {
     margin: 0;
     padding: 0;
 }
 
-/* Table reset */
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -77,7 +67,6 @@ img {
     height: auto;
 }
 
-/* Button resets */
 button {
     background: none;
     border: none;
@@ -90,7 +79,6 @@ input, textarea {
     padding: 0;
     border: none;
 }
-
 
 .xfolio-header, .xfolio-footer {
     max-width: 840px;
@@ -243,5 +231,55 @@ input, textarea {
 
 .xfolio-footer-social-share ul li a img{
   width: 16px;
+}
+
+/* HOME PAGE STYLES */
+.welcome-text {
+  margin-top: 80px;
+}
+.welcome-text > h3{
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 96px;
+  color: #0000001A;
+  text-transform: uppercase;
+  margin-left: -5px;
+}
+.welcome-text > h1{
+  font-size: 168px;
+  font-weight: 300;
+  color: #000000;
+  text-transform: uppercase;
+  margin-top: -60px !important;
+  margin-left: -13px !important;
+  box-sizing: border-box !important;
+  
+}
+
+.welcome-text h4 {
+  font-size: 34px;
+  font-weight: 400;
+  color: #000000CC;
+  line-height: 40px;
+  margin-top: -40px;
+}
+.welcome-description p{
+  font-size: 20px;
+  line-height: 32px;
+  color: #000000CC;
+  margin-top: 100px;
+  max-width: 660px;
+}
+
+.contact-mail{
+  padding-top: 40px;
+  padding-bottom: 60px;
+}
+.contact-mail p a {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--primary-color);
 }
 
