@@ -85,16 +85,19 @@ add_action( 'widgets_init', 'xfolio_widgets_init' );
 
 function xfolio_scripts() {
 	wp_enqueue_style( 'xfolio-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style('exfolio-style', get_template_directory_uri() . '/assets/css/xfolio-style.css');
 	wp_enqueue_style( 'xfolio-main', get_template_directory_uri() . '/assets/css/main.css', array(), _S_VERSION);
-	wp_style_add_data( 'xfolio-style', 'rtl', 'replace' );
+	// wp_style_add_data( 'xfolio-style', 'rtl', 'replace' );
 
+	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'xfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), _S_VERSION, true );
-
+	wp_enqueue_script('exfolio-script', get_template_directory_uri() . '/assets/js/xfolio.js', ['jquery'], true);
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'xfolio_scripts' );
+
 
 /**
  * Implement the Custom Header feature.
@@ -115,6 +118,10 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+
+require_once get_template_directory() . '/xfolio-cf-post/xfolio-custom-post.php';
+
 
 
 
