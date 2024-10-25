@@ -377,12 +377,93 @@ ul.passion-list li:not(:last-child)::after {
 }
 
 .xfolio-experience {
-  margin: 80px 0;
+  margin-top: 80px;
+  margin-bottom: 50px;
 }
 
-h4.section-title {
+h4.xfolio-section-title {
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 500;
   color:#00000066;
+  margin: 30px 0;
+}
+
+.xfolio-academic {
+  padding-bottom: 50px;
+}
+.xfolio-single-academic{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 25px 0;
+  border-bottom: 1px solid #0000001A;
+}
+.xfolio-single-academic:last-child{
+  border-bottom: none;
+}
+h3.xfolio-institute-name{
+  text-transform: capitalize;
+  font-size: 24px;
+  line-height: 29px;
+  color: var(--primary-color);
+  font-weight: 400;
+}
+.xfolio-single-academic ul{
+  display: flex;
+  gap: 20px;
+}
+li.xfolio-course{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--third-color);
+}
+li.xfolio-course-duration{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--fourth-color);
+  position: relative;
+}
+li.xfolio-course-duration::before {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 16px;
+  background:#00000066;
+  top: 3px;
+  left: -10px;
+}
+p.xfolio-subject {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+  color: var(--fourth-color);
+}
+
+.xfolio-page-content {
+  position: fixed;
+  top: 50%;
+  right: 15%;
+}
+.xfolio-page-content p {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12px;
+  color: var(--fourth-color);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.xfolio-page-content ul {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.xfolio-page-content ul li{}
+.xfolio-page-content ul li a{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: var(--fourth-color);
 }
