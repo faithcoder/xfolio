@@ -445,7 +445,7 @@ p.xfolio-subject {
 .xfolio-page-content {
   position: fixed;
   top: 50%;
-  right: 15%;
+  right: 10%;
 }
 .xfolio-page-content p {
   font-size: 10px;
@@ -466,4 +466,21 @@ p.xfolio-subject {
   font-weight: 400;
   line-height: 17px;
   color: var(--fourth-color);
+}
+
+.contact-info > a.email-me {
+	display: none;
+}
+
+/* RESPONSIVE CODES  */
+
+@media (max-width: 840px) {
+    .contact-info > a.email-contact {
+		display: none;
+	}
+	.contact-info > a.email-me {
+		display: block;
+		font-weight: 500;
+		font-size: 15px;
+	}
 }

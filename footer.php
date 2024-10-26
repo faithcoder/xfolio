@@ -1,7 +1,8 @@
 
 	<footer id="colophon" class="xfolio-footer">
 		<div class="contact-info">
-			<a href="#">contact@hiemran.com</a>
+			<a href="#" class="email-contact">contact@hiemran.com</a>
+			<a href="#" class="email-me">Email Me</a>
 		</div><!-- .site-info -->
 		<div class="xfolio-footer-social-share">
 			<ul>

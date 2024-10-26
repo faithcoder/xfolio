@@ -92,6 +92,7 @@ function xfolio_scripts() {
 	wp_enqueue_script('jquery');
 	wp_enqueue_script( 'xfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), _S_VERSION, true );
 	wp_enqueue_script('exfolio-script', get_template_directory_uri() . '/assets/js/xfolio.js', ['jquery'], true);
+	wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/js/main.js');
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
