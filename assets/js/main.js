@@ -19,22 +19,18 @@
 
 
 jQuery(document).ready(function ($) {
-    // Hamburger and close icons
-    const $hamburger = $('.hamburger-icon');
+    const $menuToggle = $('.menu-toggle');
+    const $hamburgerIcon = $('.hamburger-icon');
     const $closeIcon = $('.close-icon');
     const $menu = $('.exfolio-main-menu');
 
-    // Show menu on hamburger click
-    $hamburger.click(function () {
-        $menu.addClass('active');
-        $hamburger.hide();
-        $closeIcon.show();
-    });
+    $menuToggle.click(function () {
+        // Toggle the menu display
+        $menu.toggleClass('active');
 
-    // Hide menu on close icon click
-    $closeIcon.click(function () {
-        $menu.removeClass('active');
-        $closeIcon.hide();
-        $hamburger.show();
+        // Toggle icons visibility
+        $hamburgerIcon.toggle();
+        $closeIcon.toggle();
     });
 });
+

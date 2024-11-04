@@ -492,19 +492,23 @@ p.xfolio-subject {
 }
 
 /* Menu toggle buttons */
+
 .menu-toggle {
-    display: none;
+    display: block;
     cursor: pointer;
-    position: absolute;
-    top: 0px;
+    bottom: 20px;
     right: 20px;
     z-index: 999;
+    font-size: 24px;
 }
 
 .hamburger-icon,
 .close-icon {
     font-size: 24px;
     color: #000;
+	position: absolute;
+	top: 0;
+	right: 15px;
 }
 
 /* Responsive menu styles for screens 768px and below */
