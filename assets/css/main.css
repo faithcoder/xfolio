@@ -103,13 +103,14 @@ textarea {
 	max-width: 840px;
 	margin: 0 auto;
 	text-align: center;
+	position: relative;
 }
 
 .xfolio-header {
 	border: 1px solid #ddd;
 	padding: 10px 20px;
 	border-radius: 48px;
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .main-wrapper {
@@ -483,4 +484,81 @@ p.xfolio-subject {
 		font-weight: 500;
 		font-size: 15px;
 	}
+}
+
+/* Default menu styling */
+.exfolio-main-menu {
+    /* position: relative; */
+}
+
+/* Menu toggle buttons */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    z-index: 999;
+}
+
+.hamburger-icon,
+.close-icon {
+    font-size: 24px;
+    color: #000;
+}
+
+/* Responsive menu styles for screens 768px and below */
+@media (max-width: 768px) {
+    .xfolio-header{
+		position: fixed;
+		bottom: 20px;
+		z-index: 999;
+		background-color: #fff;
+		width: 100%;
+	}
+    .exfolio-main-menu {
+        
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        background-color: #fff; /* Menu background color */
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+        z-index: 998;
+    }
+
+    /* Show the toggle button */
+    .menu-toggle {
+        display: block;
+		
+    }
+
+	
+
+    /* Show menu when active */
+    .exfolio-main-menu.active {
+        max-height: 300px; /* Set to desired height */
+        opacity: 1;
+		position: absolute;
+		bottom: 45px;
+		background-color: red;
+		width: 94%;
+    }
+
+    /* Style menu items */
+    #primary-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 5px 10px;
+    }
+
+    #primary-menu li {
+        margin: 10px 0;
+    }
+
+    #primary-menu a {
+        color: #000;
+        text-decoration: none;
+        font-size: 18px;
+    }
 }

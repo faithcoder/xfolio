@@ -33,7 +33,11 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="exfolio-main-menu">
-			
+			<div class="menu-toggle">
+				<span class="hamburger-icon">&#9776;</span> <!-- Hamburger icon -->
+				<span class="close-icon" style="display: none;">&times;</span> <!-- Close icon -->
+			</div>
+
 			<?php
 			wp_nav_menu(
 				array(
@@ -42,5 +46,6 @@
 				)
 			);
 			?>
-		</nav><!-- #site-navigation -->
+		</nav>
+
 	</header><!-- #masthead -->
