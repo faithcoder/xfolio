@@ -494,10 +494,8 @@ p.xfolio-subject {
 /* Menu toggle buttons */
 
 .menu-toggle {
-    display: block;
+    display: none;
     cursor: pointer;
-    bottom: 20px;
-    right: 20px;
     z-index: 999;
     font-size: 24px;
 }
@@ -506,13 +504,42 @@ p.xfolio-subject {
 .close-icon {
     font-size: 24px;
     color: #000;
-	position: absolute;
-	top: 0;
-	right: 15px;
+}
+
+@media (max-width: 768px) {
+	.menu-toggle {
+        display: block;
+        padding: 10px 0;
+        margin: 0;
+        line-height: 0;
+    }
+	.xfolio-header{
+		position: fixed;
+		bottom: 20px;
+		z-index: 999;
+		background-color: #fff;
+		width: 100%;
+	}
+	ul.menu{
+		display: none;
+	}
+	.menu.active {
+		display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding: 5px 10px;
+        opacity: 1;
+		position: absolute;
+		bottom: 45px;
+		left: 0;
+		width: 100%;
+		background-color: #fff; 
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+    }
 }
 
 /* Responsive menu styles for screens 768px and below */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     .xfolio-header{
 		position: fixed;
 		bottom: 20px;
@@ -525,22 +552,18 @@ p.xfolio-subject {
         width: 100%;
         max-height: 0;
         overflow: hidden;
-        background-color: #fff; /* Menu background color */
+        background-color: #fff; 
         transition: max-height 0.5s ease, opacity 0.5s ease;
         z-index: 998;
     }
 
-    /* Show the toggle button */
+    
     .menu-toggle {
-        display: block;
-		
+        display: block;	
     }
-
-	
-
-    /* Show menu when active */
+    
     .exfolio-main-menu.active {
-        max-height: 300px; /* Set to desired height */
+        max-height: 300px; 
         opacity: 1;
 		position: absolute;
 		bottom: 45px;
@@ -548,7 +571,7 @@ p.xfolio-subject {
 		width: 94%;
     }
 
-    /* Style menu items */
+   
     #primary-menu {
         display: flex;
         flex-direction: column;
@@ -565,4 +588,4 @@ p.xfolio-subject {
         text-decoration: none;
         font-size: 18px;
     }
-}
+} */

@@ -22,7 +22,9 @@ jQuery(document).ready(function ($) {
     const $menuToggle = $('.menu-toggle');
     const $hamburgerIcon = $('.hamburger-icon');
     const $closeIcon = $('.close-icon');
-    const $menu = $('.exfolio-main-menu');
+    const $menu = $('.menu');
+
+    $closeIcon.hide();
 
     $menuToggle.click(function () {
         // Toggle the menu display
