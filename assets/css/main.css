@@ -513,13 +513,15 @@ p.xfolio-subject {
         margin: 0;
         line-height: 0;
     }
-	.xfolio-header{
+	.xfolio-header {
 		position: fixed;
 		bottom: 20px;
 		z-index: 999;
 		background-color: #fff;
-		width: 100%;
-	}
+		width: 90%;
+		left: 50%;
+		transform: translateX(-50%);
+	}	
 	ul.menu{
 		display: none;
 	}
@@ -535,6 +537,16 @@ p.xfolio-subject {
 		width: 100%;
 		background-color: #fff; 
         transition: max-height 0.5s ease, opacity 0.5s ease;
+    }
+	.exfolio-main-menu ul li:not(:last-child)::after{
+		display: none;
+	}
+	ul#primary-menu li a {
+        font-size: 26px;
+        font-weight: 400;
+        padding: 10px 10px;
+        line-height: 30px;
+        display: block;
     }
 }
 
