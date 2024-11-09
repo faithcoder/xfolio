@@ -451,7 +451,8 @@ p.xfolio-subject {
 .xfolio-page-content {
   position: fixed;
   top: 50%;
-  right: 10%;
+  right: 24%;
+  transform: translateX(30%);
 }
 .xfolio-page-content p {
   font-size: 10px;
@@ -489,6 +490,18 @@ p.xfolio-subject {
 		font-weight: 500;
 		font-size: 15px;
 	}
+}
+@media (max-width: 1490px) {
+    .xfolio-page-content {
+		right: 10%;
+		transform: translateX(16%);
+	  }
+}
+@media (max-width: 1024px) {
+    .xfolio-page-content {
+		right: 2%;
+		transform: translateX(6%);
+	  }
 }
 
 /* Default menu styling */
