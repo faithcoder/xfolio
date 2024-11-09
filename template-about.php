@@ -32,10 +32,17 @@ get_header(); // This will include the default header
         <p>
         Designing solutions in various types of industries for more than 5 years. I focused on clear visual concepts that create an impactful experience and meet the business goal for users and product owners. I believe, beauty is just an expression but In the end, we pay for the solution that makes us feel better and safe.
         </p>
-        <ul class="passion-list">
+        <ul class="passion-list-desktop">
             <li>Photography</li>
             <li>Riding</li>
             <li>Silence</li>
+            <li>Reading</li>
+        </ul>
+        <ul class="passion-list-responsive">
+            <li>Photography</li>
+            <li>Riding</li>
+            <br>
+            <li class="third-passion">Silence</li>
             <li>Reading</li>
         </ul>
     </div>
