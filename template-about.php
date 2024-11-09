@@ -30,7 +30,7 @@ get_header(); // This will include the default header
     </div>
     <div class="about-description">
         <p>
-        Designing solutions in various types of industries for more than 5 years. I focused on clear visual concepts that create an impactful experience and meet the business goal for users and product owners. I believe, beauty is just an expression but In the end, we pay for the solution that makes us feel better and safe.
+        <?php echo get_theme_mod('about-description'); ?>
         </p>
         <ul class="passion-list-desktop">
             <li>Photography</li>
