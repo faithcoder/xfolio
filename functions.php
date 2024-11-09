@@ -119,6 +119,7 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/kirki-customizer.php';
 
 
 require_once get_template_directory() . '/xfolio-cf-post/xfolio-custom-post.php';

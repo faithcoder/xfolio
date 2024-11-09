@@ -21,11 +21,11 @@ get_header(); // This will include the default header
 
     <div class="xfolio-about-intro">
         <div class="about-image">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/emran.png" alt="my-image" />
+            <img src="<?php echo get_theme_mod('my-image');?>" />
         </div>
         <div class="about-text">
-            <h1>emran <br>hossain</h1>
-            <h4>Product Designer</h4>
+            <h1><?php echo get_theme_mod('first-name');?> <br><?php echo get_theme_mod('last-name');?></h1>
+            <h4><?php echo get_theme_mod('profession-name');?></h4>
         </div>
     </div>
     <div class="about-description">
