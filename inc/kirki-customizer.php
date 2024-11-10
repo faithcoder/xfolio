@@ -68,3 +68,50 @@ new \Kirki\Field\Textarea(
 		'default'     => esc_html__( 'Write your description', 'kirki' ),
 	]
 );
+
+new \Kirki\Field\Repeater(
+	[
+		'settings'     => 'repeater_setting_2',
+		'label'        => esc_html__( 'Academic Education', 'kirki' ),
+		'section'      => 'xfolio-about-section',
+		'priority'     => 10,
+		'row_label'    => [
+			'type'  => 'field',
+			'value' => esc_html__( 'Row One', 'kirki' ),
+			'field' => 'link_text',
+		],
+		'button_label' => esc_html__( 'Add New', 'kirki' ),
+		'default'      => [
+			[
+				'academic_institute'   => esc_html__( 'Graduate', 'kirki' ),
+				'academic_subject'    => 'https://kirki.org/',
+			],
+			[
+				'academic_institute'   => esc_html__( 'High School', 'kirki' ),
+				'academic_subject'    => 'https://wordpress.org/plugins/kirki/',
+			],
+		],
+		'fields'       => [
+			'academic_institute'   => [
+				'type'        => 'text',
+				'label'       => esc_html__( 'Institute Name', 'kirki' ),
+				'default'     => '',
+			],
+			'academic_subject'    => [
+				'type'        => 'text',
+				'label'       => esc_html__( 'Subject Name', 'kirki' ),
+				'default'     => '',
+			],
+			'academic_duration'    => [
+				'type'        => 'text',
+				'label'       => esc_html__( 'Duration', 'kirki' ),
+				'default'     => '',
+			],
+			'academic_major'    => [
+				'type'        => 'text',
+				'label'       => esc_html__( 'Major', 'kirki' ),
+				'default'     => '',
+			],
+		],
+	]
+);
