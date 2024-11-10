@@ -78,19 +78,10 @@ new \Kirki\Field\Repeater(
 		'row_label'    => [
 			'type'  => 'field',
 			'value' => esc_html__( 'Row One', 'kirki' ),
-			'field' => 'link_text',
+			'field' => 'academic_subject',
 		],
 		'button_label' => esc_html__( 'Add New', 'kirki' ),
-		'default'      => [
-			[
-				'academic_institute'   => esc_html__( 'Graduate', 'kirki' ),
-				'academic_subject'    => 'https://kirki.org/',
-			],
-			[
-				'academic_institute'   => esc_html__( 'High School', 'kirki' ),
-				'academic_subject'    => 'https://wordpress.org/plugins/kirki/',
-			],
-		],
+		
 		'fields'       => [
 			'academic_institute'   => [
 				'type'        => 'text',

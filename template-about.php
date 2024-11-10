@@ -54,30 +54,25 @@ get_header(); // This will include the default header
 
     <div class="xfolio-academic">
         <h4 class="xfolio-section-title">academic education</h4>
-        <div class="xfolio-single-academic">
-            <h3 class="xfolio-institute-name">National University</h3>
-            <ul>
-                <li class="xfolio-course">Bachelor of Business Administration (BBA)</li>
-                <li class="xfolio-course-duration">2012 - 2017</li>
-            </ul>
-            <p class="xfolio-subject">Finance & Banking</p>
-        </div>
-        <div class="xfolio-single-academic">
-            <h3 class="xfolio-institute-name">National University</h3>
-            <ul>
-                <li class="xfolio-course">Bachelor of Business Administration (BBA)</li>
-                <li class="xfolio-course-duration">2012 - 2017</li>
-            </ul>
-            <p class="xfolio-subject">Finance & Banking</p>
-        </div>
-        <div class="xfolio-single-academic">
-            <h3 class="xfolio-institute-name">National University</h3>
-            <ul>
-                <li class="xfolio-course">Bachelor of Business Administration (BBA)</li>
-                <li class="xfolio-course-duration">2012 - 2017</li>
-            </ul>
-            <p class="xfolio-subject">Finance & Banking</p>
-        </div>
+
+        <?php
+            $settings = get_theme_mod( 'repeater_setting_2' );
+
+            if ( ! empty( $settings ) && is_array( $settings ) ) :
+        ?>
+            <?php foreach ( $settings as $setting ) : ?>
+                <div class="xfolio-single-academic">
+                    <h3 class="xfolio-institute-name"><?php echo esc_html( $setting['academic_institute'] ); ?></h3>
+                    <ul>
+                        <li class="xfolio-course"><?php echo esc_html( $setting['academic_subject'] ); ?></li>
+                        <li class="xfolio-course-duration"><?php echo esc_html( $setting['academic_duration'] ); ?></li>
+                    </ul>
+                    <p class="xfolio-subject"><?php echo esc_html( $setting['academic_major'] ); ?></p>
+                </div>
+            <?php endforeach; ?>
+        <?php else : ?>
+            <p>No academic education data available.</p>
+        <?php endif; ?>
     </div>
     
 </main><!-- .main-wrapper -->
