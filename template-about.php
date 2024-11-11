@@ -12,9 +12,9 @@ get_header(); // This will include the default header
 <div class="xfolio-page-content">
     <p>PAGE CONTENT</p>
     <ul>
-        <li><a href="">Info</a></li>
-        <li><a href="">Experience</a></li>
-        <li><a href="">Education</a></li>
+        <li><a href="#info">Info</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="">Skills</a></li>
     </ul>
 </div>
@@ -28,7 +28,7 @@ get_header(); // This will include the default header
             <h4><?php echo get_theme_mod('profession-name');?></h4>
         </div>
     </div>
-    <div class="about-description">
+    <div class="about-description" id="info">
         <p>
         <?php echo get_theme_mod('about-description'); ?>
         </p>
@@ -47,12 +47,12 @@ get_header(); // This will include the default header
         </ul>
     </div>
 
-    <div class="xfolio-experience">
+    <div class="xfolio-experience" id="experience">
         <h4 class="xfolio-section-title">work experience</h4>
         <?php echo do_shortcode('[exfolio_experiences]'); ?>
     </div>
 
-    <div class="xfolio-academic">
+    <div class="xfolio-academic" id="education">
         <h4 class="xfolio-section-title">academic education</h4>
 
         <?php

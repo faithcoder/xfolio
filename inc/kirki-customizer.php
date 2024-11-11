@@ -9,13 +9,71 @@ new \Kirki\Panel(
 	]
 );
 
+// HOME PAGE CONTROLLERS 
+
+new \Kirki\Section(
+	'xfolio-home-section',
+	[
+		'title'       => esc_html__( 'Home page', 'kirki' ),
+		'description' => esc_html__( 'Home page contents.', 'kirki' ),
+		'panel'       => 'xfolio',
+		'priority'    => 150,
+	]
+);
+
+new \Kirki\Field\Text(
+	[
+		'settings' => 'xfolio-intro',
+		'label'    => esc_html__( 'Say Hi', 'xfolio' ),
+		'section'  => 'xfolio-home-section',
+		'default'  => esc_html__( 'Hi', 'xfolio' ),
+		'priority' => 10,
+	]
+);
+new \Kirki\Field\Text(
+	[
+		'settings' => 'xfolio-intro-name',
+		'label'    => esc_html__( 'Your nick name', 'xfolio' ),
+		'section'  => 'xfolio-home-section',
+		'default'  => esc_html__( 'Arif', 'xfolio' ),
+		'priority' => 10,
+	]
+);
+new \Kirki\Field\Text(
+	[
+		'settings' => 'xfolio-intro-profession',
+		'label'    => esc_html__( 'Your profession', 'xfolio' ),
+		'section'  => 'xfolio-home-section',
+		'default'  => esc_html__( 'WordPress Developer', 'xfolio' ),
+		'priority' => 10,
+	]
+);
+new \Kirki\Field\Textarea(
+	[
+		'settings' => 'xfolio-intro-description',
+		'label'    => esc_html__( 'Introduce Yourself', 'xfolio' ),
+		'section'  => 'xfolio-home-section',
+		'default'  => esc_html__( 'Introduce yourself', 'xfolio' ),
+		'priority' => 10,
+	]
+);
+new \Kirki\Field\Text(
+	[
+		'settings' => 'xfolio-intro-contact',
+		'label'    => esc_html__( 'Your email', 'xfolio' ),
+		'section'  => 'xfolio-home-section',
+		'default'  => esc_html__( 'test@yourdomain.com', 'xfolio' ),
+		'priority' => 10,
+	]
+);
+
 // ABOUT ME PAGE CONTROLLERS 
 
 new \Kirki\Section(
 	'xfolio-about-section',
 	[
-		'title'       => esc_html__( 'About Me page', 'kirki' ),
-		'description' => esc_html__( 'About Me Description.', 'kirki' ),
+		'title'       => esc_html__( 'About Me page', 'xfolio' ),
+		'description' => esc_html__( 'About Me Description.', 'xfolio' ),
 		'panel'       => 'xfolio',
 		'priority'    => 160,
 	]
@@ -24,8 +82,8 @@ new \Kirki\Section(
 new \Kirki\Field\Image(
 	[
 		'settings'    => 'my-image',
-		'label'       => esc_html__( 'My Image', 'kirki' ),
-		'description' => esc_html__( 'My Image URL', 'kirki' ),
+		'label'       => esc_html__( 'My Image', 'xfolio' ),
+		'description' => esc_html__( 'My Image URL', 'xfolio' ),
 		'section'     => 'xfolio-about-section',
 		'default'     => '',
 	]
@@ -63,44 +121,44 @@ new \Kirki\Field\Text(
 new \Kirki\Field\Textarea(
 	[
 		'settings'    => 'about-description',
-		'label'       => esc_html__( 'About Description', 'kirki' ),
+		'label'       => esc_html__( 'About Description', 'xfolio' ),
 		'section'     => 'xfolio-about-section',
-		'default'     => esc_html__( 'Write your description', 'kirki' ),
+		'default'     => esc_html__( 'Write your description', 'xfolio' ),
 	]
 );
 
 new \Kirki\Field\Repeater(
 	[
 		'settings'     => 'repeater_setting_2',
-		'label'        => esc_html__( 'Academic Education', 'kirki' ),
+		'label'        => esc_html__( 'Academic Education', 'xfolio' ),
 		'section'      => 'xfolio-about-section',
 		'priority'     => 10,
 		'row_label'    => [
 			'type'  => 'field',
-			'value' => esc_html__( 'Row One', 'kirki' ),
+			'value' => esc_html__( 'Row One', 'xfolio' ),
 			'field' => 'academic_subject',
 		],
-		'button_label' => esc_html__( 'Add New', 'kirki' ),
+		'button_label' => esc_html__( 'Add New', 'xfolio' ),
 		
 		'fields'       => [
 			'academic_institute'   => [
 				'type'        => 'text',
-				'label'       => esc_html__( 'Institute Name', 'kirki' ),
+				'label'       => esc_html__( 'Institute Name', 'xfolio' ),
 				'default'     => '',
 			],
 			'academic_subject'    => [
 				'type'        => 'text',
-				'label'       => esc_html__( 'Subject Name', 'kirki' ),
+				'label'       => esc_html__( 'Subject Name', 'xfolio' ),
 				'default'     => '',
 			],
 			'academic_duration'    => [
 				'type'        => 'text',
-				'label'       => esc_html__( 'Duration', 'kirki' ),
+				'label'       => esc_html__( 'Duration', 'xfolio' ),
 				'default'     => '',
 			],
 			'academic_major'    => [
 				'type'        => 'text',
-				'label'       => esc_html__( 'Major', 'kirki' ),
+				'label'       => esc_html__( 'Major', 'xfolio' ),
 				'default'     => '',
 			],
 		],
