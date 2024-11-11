@@ -27,12 +27,20 @@ get_header(); // This will include the default header
         </div>
         <div class="xfolio-social-profiles">
             <h5>social</h5>
-            <?php $settings = get_theme_mod( 'repeater_setting_3');?>
-            
                 <ul>
-                <?php foreach ( $settings as $setting ) : ?>
-                    <li><a href="<?php echo $setting['xfolio-social-link']; ?>"><?php echo $setting['xfolio-social-text']; ?></a></li>
-                <?php endforeach; ?>
+                <?php 
+                $settings = get_theme_mod('repeater_setting_3', []); 
+
+                if (is_array($settings) && !empty($settings)) : 
+                    foreach ($settings as $setting) : ?>
+                        <li><a href="<?php echo esc_url($setting['xfolio-social-link']); ?>">
+                            <?php echo esc_html($setting['xfolio-social-text']); ?>
+                        </a></li>
+                    <?php endforeach; 
+                else : ?>
+                    <p>No social links available.</p> 
+                <?php endif; ?>
+
                 </ul>
             
         </div>
