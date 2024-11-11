@@ -472,6 +472,7 @@ p.xfolio-subject {
   flex-direction: column;
   gap: 3px;
 }
+
 .xfolio-page-content ul li{}
 .xfolio-page-content ul li a{
   font-size: 14px;
@@ -484,6 +485,52 @@ p.xfolio-subject {
 	display: none;
 }
 
+/* CONTACT PAGE STYLES */
+
+.xfolio-contact-page{
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: end;
+}
+
+.xfolio-contact-page h5 {
+	font-size: 10px;
+	color: #00000066;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.xfolio-contact-page p{
+	font-size: 18px;
+	font-weight: 400;
+	margin-top: 5px;
+}
+
+.xfolio-phone {
+	margin: 20px 0;
+}
+
+span.border-line {
+	width: 100%;
+	border: 1px solid #00000033;
+	margin: 50px 0;
+	display: block;
+}
+.form-title-area {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+	cursor: pointer;
+}
+.form-title-area img {
+	width: 22px;
+}
+
+.form-title-area h4 {
+	font-size: 18px;
+	font-weight: 400;
+}
 /* RESPONSIVE CODES  */
 
 @media (max-width: 840px) {

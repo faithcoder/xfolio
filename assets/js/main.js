@@ -34,5 +34,15 @@ jQuery(document).ready(function ($) {
         $hamburgerIcon.toggle();
         $closeIcon.toggle();
     });
+
+    $('.xfolio-contact-form').hide();
+
+    // Toggle form display on clicking the title area
+    $('.form-title-area').click(function () {
+        $('.xfolio-contact-form').slideToggle(); // Slide the form up or down
+    });
+
+
+
 });
 
