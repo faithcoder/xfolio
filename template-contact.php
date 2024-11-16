@@ -50,11 +50,10 @@ get_header(); // This will include the default header
 
     <div class="xfolio-contact-form-area">
         <div class="form-title-area">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/msg_icon.png" alt="Share on Twitter" /><h4>Send me a email</h4>    
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/msg_icon.png" alt="Share on Twitter" /><h4>Send me a message</h4>    
         </div>
         <div class="xfolio-contact-form">
-           hello form
-        
+           <?php echo do_shortcode('[contact-form-7 id="86df41f" title="Contact form 1"]') ?>
         </div>
     </div>
 
