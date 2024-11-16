@@ -29,7 +29,7 @@ get_header(); // This will include the default header
             <h5>social</h5>
                 <ul>
                 <?php 
-                $settings = get_theme_mod('repeater_setting_3', []); 
+                $settings = get_theme_mod('repeater_setting_3'); 
 
                 if (is_array($settings) && !empty($settings)) : 
                     foreach ($settings as $setting) : ?>
@@ -50,10 +50,11 @@ get_header(); // This will include the default header
 
     <div class="xfolio-contact-form-area">
         <div class="form-title-area">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/msg_icon.png" alt="Share on Twitter" /><h4>Send me a message</h4>    
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/msg_icon.png" alt="Share on Twitter" /><h4>Send me a email</h4>    
         </div>
         <div class="xfolio-contact-form">
-            this is form area
+           hello form
+        
         </div>
     </div>
 
