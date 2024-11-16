@@ -720,6 +720,21 @@ span.border-line {
 	}
 }
 
+@media (max-width: 400px){
+	ul.passion-list-responsive li {
+		margin-right: 60px;
+	}
+
+	ul.passion-list-responsive li:not(:first-child)::before {
+		width: 50px;
+		top: 15px;
+		left: -60px;
+	}
+	li.third-passion {
+		margin-left: 70px;
+	}
+}
+
 .xfolio-contact-form{
 	margin: 20px 0;
 }
