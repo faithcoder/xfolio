@@ -1,5 +1,72 @@
 <?php
+/**
+ * Register Custom Post Types
+ */
 
+function xfolio_register_post_types() {
+    // Portfolio Post Type
+    $labels = array(
+        'name'               => _x('Portfolios', 'post type general name', 'xfolio'),
+        'singular_name'      => _x('Portfolio', 'post type singular name', 'xfolio'),
+        'menu_name'          => _x('Portfolios', 'admin menu', 'xfolio'),
+        'name_admin_bar'     => _x('Portfolio', 'add new on admin bar', 'xfolio'),
+        'add_new'            => _x('Add New', 'portfolio', 'xfolio'),
+        'add_new_item'       => __('Add New Portfolio', 'xfolio'),
+        'new_item'          => __('New Portfolio', 'xfolio'),
+        'edit_item'         => __('Edit Portfolio', 'xfolio'),
+        'view_item'         => __('View Portfolio', 'xfolio'),
+        'all_items'         => __('All Portfolios', 'xfolio'),
+        'search_items'      => __('Search Portfolios', 'xfolio'),
+        'not_found'         => __('No portfolios found.', 'xfolio'),
+        'not_found_in_trash'=> __('No portfolios found in Trash.', 'xfolio')
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'           => true,
+        'show_in_menu'      => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'portfolio'),
+        'capability_type'   => 'post',
+        'has_archive'       => true,
+        'hierarchical'      => false,
+        'menu_position'     => 5,
+        'menu_icon'         => 'dashicons-portfolio',
+        'supports'          => array('title', 'editor', 'thumbnail', 'excerpt'),
+    );
+
+    register_post_type('xfolio-portfolio', $args);
+}
+add_action('init', 'xfolio_register_post_types');
+
+// Add portfolio categories
+function xfolio_register_taxonomies() {
+    $labels = array(
+        'name'              => _x('Portfolio Categories', 'taxonomy general name', 'xfolio'),
+        'singular_name'     => _x('Portfolio Category', 'taxonomy singular name', 'xfolio'),
+        'search_items'      => __('Search Portfolio Categories', 'xfolio'),
+        'all_items'         => __('All Portfolio Categories', 'xfolio'),
+        'parent_item'       => __('Parent Portfolio Category', 'xfolio'),
+        'parent_item_colon' => __('Parent Portfolio Category:', 'xfolio'),
+        'edit_item'         => __('Edit Portfolio Category', 'xfolio'),
+        'update_item'       => __('Update Portfolio Category', 'xfolio'),
+        'add_new_item'      => __('Add New Portfolio Category', 'xfolio'),
+        'new_item_name'     => __('New Portfolio Category Name', 'xfolio'),
+        'menu_name'         => __('Categories', 'xfolio'),
+    );
+
+    register_taxonomy('portfolio-category', 'xfolio-portfolio', array(
+        'hierarchical'      => true,
+        'labels'           => $labels,
+        'show_ui'          => true,
+        'show_admin_column'=> true,
+        'query_var'        => true,
+        'rewrite'          => array('slug' => 'portfolio-category'),
+    ));
+}
+add_action('init', 'xfolio_register_taxonomies');
 
 // Register Custom Post Type for Experience
 function exfolio_register_experience_post_type() {
