@@ -12,6 +12,10 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+// Move this near the top of functions.php, before any other includes
+require_once get_template_directory() . '/inc/tgmpa/class-tgm-plugin-activation.php';
+require_once get_template_directory() . '/inc/tgmpa/tgmpa-config.php';
+
 function xfolio_setup() {
 
 	load_theme_textdomain( 'xfolio', get_template_directory() . '/languages' );
@@ -121,6 +125,10 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/kirki-customizer.php';
 
+/**
+ * Include TGMPA configuration
+ */
+require get_template_directory() . '/inc/tgmpa/tgmpa-config.php';
 
 require_once get_template_directory() . '/xfolio-cf-post/xfolio-custom-post.php';
 
