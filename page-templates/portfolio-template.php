@@ -33,11 +33,11 @@ get_header();
                     while ($portfolio_query->have_posts()) :
                         $portfolio_query->the_post();
                         ?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class('xfolio-portfolio-item'); ?>>
+                        <article id="post-<?php the_ID(); ?>" <?php post_class('xfolio-portfolio-item'); ?> data-post-id="<?php echo get_the_ID(); ?>">
                             <div class="xfolio-portfolio-item-inner">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <div class="xfolio-portfolio-thumbnail">
-                                        <a href="<?php the_permalink(); ?>">
+                                        <a href="<?php the_permalink(); ?>" class="xfolio-portfolio-link">
                                             <?php the_post_thumbnail('large'); ?>
                                         </a>
                                     </div>
@@ -45,7 +45,7 @@ get_header();
                                 
                                 <div class="xfolio-portfolio-content">
                                     <h2 class="xfolio-portfolio-title">
-                                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                                        <a href="<?php the_permalink(); ?>" class="xfolio-portfolio-link"><?php the_title(); ?></a>
                                     </h2>
                                     <div class="portfolio-excerpt">
                                         <?php the_excerpt(); ?>
@@ -66,14 +66,11 @@ get_header();
     </div>
 </div>
 
-<!-- Add this right before the portfolio panel div -->
+<!-- Portfolio Panel Structure -->
 <div class="xfolio-portfolio-overlay"></div>
-
-<div class="xfolio-portfolio-single">
-    <div class="xfolio-portfolio-panel">
-        <div class="xfolio-portfolio-panel-inner">
-            <!-- Content will be loaded here via AJAX -->
-        </div>
+<div class="xfolio-portfolio-panel">
+    <div class="xfolio-portfolio-panel-inner">
+        <!-- Content will be loaded here via AJAX -->
     </div>
 </div>
 

@@ -6,42 +6,43 @@
 get_header();
 ?>
 
-<div class="portfolio-single">
-    <div class="portfolio-panel">
-        <div class="portfolio-panel-inner">
-            <button class="close-panel">&times;</button>
-            
-            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                <header class="entry-header">
-                    <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
-                </header>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+    <header class="entry-header">
+        <h1 class="entry-title"><?php the_title(); ?></h1>
+    </header>
 
-                <?php if (has_post_thumbnail()) : ?>
-                    <div class="portfolio-featured-image">
-                        <?php the_post_thumbnail('full'); ?>
-                    </div>
-                <?php endif; ?>
+    <?php if (has_post_thumbnail()) : ?>
+        <?php the_post_thumbnail('large'); ?>
+    <?php endif; ?>
 
-                <div class="entry-content">
-                    <?php
-                    the_content();
-                    
-                    // Display portfolio categories
-                    $terms = get_the_terms(get_the_ID(), 'portfolio-category');
-                    if ($terms && !is_wp_error($terms)) :
-                        echo '<div class="portfolio-categories">';
-                        echo '<span class="cat-label">' . esc_html__('Categories:', 'xfolio') . '</span>';
-                        foreach ($terms as $term) {
-                            echo '<span class="portfolio-category">' . esc_html($term->name) . '</span>';
-                        }
-                        echo '</div>';
-                    endif;
-                    ?>
-                </div>
-            </article>
-        </div>
+    <div class="entry-content">
+        <?php the_content(); ?>
     </div>
-</div>
+
+    <?php 
+    $tools_used = get_post_meta(get_the_ID(), '_xfolio_tools_used', true);
+    if ($tools_used) : ?>
+        <div class="xfolio-portfolio-tools">
+            <h3><?php esc_html_e('Tools Used', 'xfolio'); ?></h3>
+            <div class="xfolio-tools-list">
+                <?php echo wp_kses_post(nl2br($tools_used)); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <?php 
+    $preview_url = get_post_meta(get_the_ID(), '_xfolio_preview_url', true);
+    if ($preview_url) : ?>
+        <div class="xfolio-portfolio-preview">
+            <a href="<?php echo esc_url($preview_url); ?>" class="xfolio-preview-button" target="_blank" rel="noopener">
+                <?php esc_html_e('Live Preview', 'xfolio'); ?>
+                <svg class="xfolio-external-link" width="16" height="16" viewBox="0 0 24 24">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                </svg>
+            </a>
+        </div>
+    <?php endif; ?>
+</article>
 
 <?php
-get_footer(); 
+get_footer(); ?> 

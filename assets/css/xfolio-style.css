@@ -237,6 +237,7 @@ p.exfolio-description{
     transition: right 0.3s ease;
     overflow-y: auto;
     z-index: 1000;
+    padding: 0;
 }
 
 .xfolio-portfolio-panel.active {
@@ -244,8 +245,8 @@ p.exfolio-description{
 }
 
 .xfolio-portfolio-panel-inner {
-    padding: 30px;
     position: relative;
+    min-height: 100%;
 }
 
 .xfolio-close-panel {
@@ -318,4 +319,107 @@ p.exfolio-description{
     .xfolio-portfolio-page {
         padding: 30px 0;
     }
+}
+
+/* Portfolio Detail Styles */
+.xfolio-portfolio-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.xfolio-portfolio-featured-image {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.xfolio-portfolio-featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.xfolio-portfolio-content {
+    padding: 0;
+}
+
+.xfolio-portfolio-title {
+    font-size: 28px;
+    margin: 0 0 20px;
+    color: #333;
+}
+
+.xfolio-portfolio-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.xfolio-portfolio-tools {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 8px;
+}
+
+.xfolio-portfolio-tools h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 0 0 15px;
+}
+
+.xfolio-tools-list {
+    color: #666;
+    line-height: 1.6;
+}
+
+.xfolio-portfolio-preview {
+    margin-top: 30px;
+}
+
+.xfolio-preview-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.xfolio-preview-button:hover {
+    background: #0056b3;
+    color: #fff;
+}
+
+.xfolio-external-link {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .xfolio-portfolio-title {
+        font-size: 24px;
+    }
+
+    .xfolio-portfolio-tools {
+        padding: 15px;
+    }
+}
+
+/* Add error state styling */
+.xfolio-error {
+    padding: 20px;
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    margin: 20px;
 }

@@ -38,6 +38,62 @@ function xfolio_register_post_types() {
     );
 
     register_post_type('xfolio-portfolio', $args);
+
+    // Add Custom Meta Box for Portfolio Details
+    function xfolio_add_portfolio_meta_boxes() {
+        add_meta_box(
+            'xfolio_portfolio_details',
+            __('Portfolio Details', 'xfolio'),
+            'xfolio_portfolio_meta_box_callback',
+            'xfolio-portfolio',
+            'normal',
+            'high'
+        );
+    }
+    add_action('add_meta_boxes', 'xfolio_add_portfolio_meta_boxes');
+
+    function xfolio_portfolio_meta_box_callback($post) {
+        wp_nonce_field('xfolio_save_portfolio_details', 'xfolio_portfolio_nonce');
+
+        $tools_used = get_post_meta($post->ID, '_xfolio_tools_used', true);
+        $preview_url = get_post_meta($post->ID, '_xfolio_preview_url', true);
+
+        ?>
+        <p>
+            <label for="xfolio_tools_used"><?php _e('Tools Used:', 'xfolio'); ?></label>
+            <textarea id="xfolio_tools_used" name="xfolio_tools_used" class="large-text" rows="3"><?php echo esc_textarea($tools_used); ?></textarea>
+            <span class="description"><?php _e('Enter the tools and technologies used in this project', 'xfolio'); ?></span>
+        </p>
+        <p>
+            <label for="xfolio_preview_url"><?php _e('Preview URL:', 'xfolio'); ?></label>
+            <input type="url" id="xfolio_preview_url" name="xfolio_preview_url" class="large-text" value="<?php echo esc_url($preview_url); ?>">
+            <span class="description"><?php _e('Enter the live preview URL for this project', 'xfolio'); ?></span>
+        </p>
+        <?php
+    }
+
+    function xfolio_save_portfolio_meta($post_id) {
+        if (!isset($_POST['xfolio_portfolio_nonce']) || !wp_verify_nonce($_POST['xfolio_portfolio_nonce'], 'xfolio_save_portfolio_details')) {
+            return;
+        }
+
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return;
+        }
+
+        if (!current_user_can('edit_post', $post_id)) {
+            return;
+        }
+
+        if (isset($_POST['xfolio_tools_used'])) {
+            update_post_meta($post_id, '_xfolio_tools_used', sanitize_textarea_field($_POST['xfolio_tools_used']));
+        }
+
+        if (isset($_POST['xfolio_preview_url'])) {
+            update_post_meta($post_id, '_xfolio_preview_url', esc_url_raw($_POST['xfolio_preview_url']));
+        }
+    }
+    add_action('save_post', 'xfolio_save_portfolio_meta');
 }
 add_action('init', 'xfolio_register_post_types');
 

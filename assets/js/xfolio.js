@@ -16,9 +16,10 @@ jQuery(document).ready(function($) {
     // Portfolio panel handling
     function initXfolioPortfolio() {
         // Open panel when portfolio item is clicked
-        $('.xfolio-portfolio-item a').on('click', function(e) {
+        $(document).on('click', '.xfolio-portfolio-link', function(e) {
             e.preventDefault();
             var url = $(this).attr('href');
+            var postId = $(this).closest('article').data('post-id');
             
             // Show loading state and activate overlay
             $('.xfolio-portfolio-overlay').addClass('active');
@@ -29,14 +30,48 @@ jQuery(document).ready(function($) {
             $('body').css('overflow', 'hidden');
             
             // Load content via AJAX
-            $.get(url, function(data) {
-                var content = $(data).find('article').first();
-                $('.xfolio-portfolio-panel-inner').html(
-                    '<button class="xfolio-close-panel">&times;</button>' +
-                    content.html()
-                );
-                // Update URL without refreshing
-                history.pushState({}, '', url);
+            $.ajax({
+                url: xfolio_ajax.ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'xfolio_load_portfolio',
+                    nonce: xfolio_ajax.nonce,
+                    post_id: postId
+                },
+                success: function(response) {
+                    if (response.success) {
+                        var portfolioContent = `
+                            <button class="xfolio-close-panel">&times;</button>
+                            <article class="xfolio-portfolio-detail">
+                                ${response.data.image ? `
+                                    <div class="xfolio-portfolio-featured-image">
+                                        ${response.data.image}
+                                    </div>
+                                ` : ''}
+                                <div class="xfolio-portfolio-content">
+                                    <h1 class="xfolio-portfolio-title">${response.data.title}</h1>
+                                    <div class="xfolio-portfolio-description">
+                                        ${response.data.content}
+                                    </div>
+                                    ${response.data.tools || ''}
+                                    ${response.data.preview || ''}
+                                </div>
+                            </article>
+                        `;
+                        
+                        $('.xfolio-portfolio-panel-inner').html(portfolioContent);
+                        history.pushState({}, '', url);
+                    } else {
+                        throw new Error('Invalid response');
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error('AJAX Error:', textStatus, errorThrown);
+                    $('.xfolio-portfolio-panel-inner').html(
+                        '<button class="xfolio-close-panel">&times;</button>' +
+                        '<div class="xfolio-error">Failed to load content. Please try again.</div>'
+                    );
+                }
             });
         });
 
