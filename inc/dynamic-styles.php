@@ -191,50 +191,33 @@ function xfolio_get_dynamic_styles() {
         $styles .= '}';
     }
 
-    // Footer Background
-    $footer_bg = get_theme_mod('xfolio_footer_background', []);
-    if (!empty($footer_bg)) {
-        $styles .= '.xfolio-footer {';
-        foreach ($footer_bg as $property => $value) {
-            if ($value) {
-                $styles .= $property . ': ' . $value . ';';
-            }
-        }
-        $styles .= '}';
-    }
-
-    // Footer Padding
-    $footer_padding = get_theme_mod('xfolio_footer_padding', []);
-    if (!empty($footer_padding)) {
-        $styles .= '.xfolio-footer {';
-        foreach ($footer_padding as $property => $value) {
-            $styles .= $property . ': ' . $value . ';';
-        }
-        $styles .= '}';
-    }
-
-    // Contact Typography
-    $contact_typography = get_theme_mod('xfolio_footer_contact_typography', []);
-    if (!empty($contact_typography)) {
-        $styles .= '.xfolio-footer .contact-info a {';
-        foreach ($contact_typography as $property => $value) {
-            if ($value) {
-                $styles .= $property . ': ' . $value . ';';
-            }
-        }
-        $styles .= '}';
-    }
-
-    // Contact Links Color
-    $contact_color = get_theme_mod('xfolio_footer_contact_color', '#333333');
-    $contact_hover_color = get_theme_mod('xfolio_footer_contact_hover_color', '#007bff');
+    // Footer Styles
+    $footer_bg = get_theme_mod('xfolio_footer_background', '#ffffff');
+    $footer_text_typo = get_theme_mod('xfolio_footer_text_typography', [
+        'font-family'     => 'Inter',
+        'variant'         => 'regular',
+        'font-size'       => '14px',
+        'line-height'     => '1.5',
+        'letter-spacing'  => '0',
+        'text-transform'  => 'none',
+        'color'          => '#666666',
+    ]);
+    
     $styles .= '
-        .xfolio-footer .contact-info a {
-            color: ' . esc_attr($contact_color) . ';
-            transition: color 0.3s ease;
+        /* Footer Background */
+        footer.xfolio-footer {
+            background-color: ' . esc_attr($footer_bg) . ' !important;
         }
-        .xfolio-footer .contact-info a:hover {
-            color: ' . esc_attr($contact_hover_color) . ';
+
+        /* Footer Text Typography */
+        .contact-info a{
+            ' . (isset($footer_text_typo['font-family']) ? 'font-family: ' . esc_attr($footer_text_typo['font-family']) . ' !important;' : '') . '
+            ' . (isset($footer_text_typo['variant']) ? 'font-weight: ' . esc_attr($footer_text_typo['variant']) . ' !important;' : '') . '
+            ' . (isset($footer_text_typo['font-size']) ? 'font-size: ' . esc_attr($footer_text_typo['font-size']) . ' !important;' : '') . '
+            ' . (isset($footer_text_typo['line-height']) ? 'line-height: ' . esc_attr($footer_text_typo['line-height']) . ' !important;' : '') . '
+            ' . (isset($footer_text_typo['letter-spacing']) ? 'letter-spacing: ' . esc_attr($footer_text_typo['letter-spacing']) . ' !important;' : '') . '
+            ' . (isset($footer_text_typo['text-transform']) ? 'text-transform: ' . esc_attr($footer_text_typo['text-transform']) . ' !important;' : '') . '
+            ' . (isset($footer_text_typo['color']) ? 'color: ' . esc_attr($footer_text_typo['color']) . ' !important;' : '') . '
         }
     ';
 
@@ -262,11 +245,3 @@ function xfolio_output_dynamic_styles() {
     }
 }
 add_action('wp_head', 'xfolio_output_dynamic_styles');
-
-// Add a debug function to check if customizer values are being saved
-function xfolio_debug_customizer_values() {
-    error_log('Header Background: ' . print_r(get_theme_mod('xfolio_header_background'), true));
-    error_log('Header Logo Typography: ' . print_r(get_theme_mod('xfolio_header_logo_typography'), true));
-    error_log('Header Menu Typography: ' . print_r(get_theme_mod('xfolio_header_menu_typography'), true));
-}
-add_action('customize_save_after', 'xfolio_debug_customizer_values'); 

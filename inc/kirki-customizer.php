@@ -321,12 +321,13 @@ if ( class_exists( 'Kirki' ) ) {
 	);
 
 	// Footer Style Controls
-	new \Kirki\Field\Custom(
+	new \Kirki\Field\Color(
 		[
-			'settings'    => 'footer_styles_title',
-			'label'       => esc_html__('Footer Styles', 'xfolio'),
+			'settings'    => 'xfolio_footer_background',
+			'label'       => esc_html__('Footer Background', 'xfolio'),
 			'section'     => 'xfolio_styles',
-			'default'     => '<h3 style="padding: 15px; background: #fff; margin: 0;">' . esc_html__('Footer Style Options', 'xfolio') . '</h3>',
+			'default'     => '#ffffff',
+			'transport'   => 'auto',
 			'active_callback' => [
 				[
 					'setting'  => 'style_sections',
@@ -336,6 +337,32 @@ if ( class_exists( 'Kirki' ) ) {
 			],
 		]
 	);
+
+	new \Kirki\Field\Typography(
+		[
+			'settings'    => 'xfolio_footer_text_typography',
+			'label'       => esc_html__('Footer Text Typography', 'xfolio'),
+			'section'     => 'xfolio_styles',
+			'default'     => [
+				'font-family'     => 'Inter',
+				'variant'         => 'regular',
+				'font-size'       => '14px',
+				'line-height'     => '1.5',
+				'letter-spacing'  => '0',
+				'text-transform'  => 'none',
+				'color'          => '#666666',
+			],
+			'active_callback' => [
+				[
+					'setting'  => 'style_sections',
+					'operator' => '===',
+					'value'    => 'footer',
+				]
+			],
+		]
+	);
+
+	
 
 	// HOME PAGE CONTROLLERS 
 
@@ -572,45 +599,7 @@ if ( class_exists( 'Kirki' ) ) {
 		]
 	);
 
-	// Footer Background
-	new \Kirki\Field\Background(
-		[
-			'settings'    => 'xfolio_footer_background',
-			'label'       => esc_html__('Footer Background', 'xfolio'),
-			'section'     => 'xfolio_styles',
-			'default'     => [
-				'background-color'      => '#ffffff',
-				'background-image'      => '',
-				'background-repeat'     => 'no-repeat',
-				'background-position'   => 'center center',
-				'background-size'       => 'cover',
-				'background-attachment' => 'scroll',
-			],
-			'active_callback' => [
-				[
-					'setting'  => 'style_sections',
-					'operator' => '===',
-					'value'    => 'footer',
-				]
-			],
-		]
-	);
 
-	// Footer Padding
-	new \Kirki\Field\Dimensions(
-		[
-			'settings'    => 'xfolio_footer_padding',
-			'label'       => esc_html__('Footer Padding', 'xfolio'),
-			'section'     => 'xfolio_footer_styles',
-			'default'     => [
-				'padding-top'    => '60px',
-				'padding-bottom' => '60px',
-				'padding-left'   => '20px',
-				'padding-right'  => '20px',
-			],
-			'priority'    => 20,
-		]
-	);
 
 	// Contact Info Typography
 	new \Kirki\Field\Typography(
@@ -696,15 +685,6 @@ if ( class_exists( 'Kirki' ) ) {
 		]
 	);
 
-	new \Kirki\Field\Text(
-		[
-			'settings' => 'xfolio_footer_phone',
-			'label'    => esc_html__('Contact Phone', 'xfolio'),
-			'section'  => 'xfolio-footer-section',
-			'default'  => '+1234567890',
-			'priority' => 20,
-		]
-	);
 
 	// Social Profiles Repeater
 	new \Kirki\Field\Repeater(
@@ -1002,24 +982,7 @@ if ( class_exists( 'Kirki' ) ) {
 		]
 	);
 
-	// Add these to your existing footer styles if needed
-	new \Kirki\Field\Color(
-		[
-			'settings'    => 'xfolio_footer_border_color',
-			'label'       => esc_html__('Footer Border Color', 'xfolio'),
-			'section'     => 'xfolio_footer_styles',
-			'default'     => '#eeeeee',
-		]
-	);
-
-	new \Kirki\Field\Dimension(
-		[
-			'settings'    => 'xfolio_footer_border_width',
-			'label'       => esc_html__('Footer Border Width', 'xfolio'),
-			'section'     => 'xfolio_footer_styles',
-			'default'     => '1px',
-		]
-	);
+	
 } else {
 	// Optional: Add a notice in the admin area
 	add_action( 'admin_notices', function() {
