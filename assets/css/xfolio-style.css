@@ -295,6 +295,8 @@ p.exfolio-description{
 /* Portfolio Page Template Styles */
 .xfolio-portfolio-page {
     padding: 60px 0;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .xfolio-portfolio-page .container {

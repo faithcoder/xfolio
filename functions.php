@@ -88,20 +88,26 @@ function xfolio_widgets_init() {
 add_action( 'widgets_init', 'xfolio_widgets_init' );
 
 function xfolio_scripts() {
-	wp_enqueue_style( 'xfolio-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_enqueue_style('exfolio-style', get_template_directory_uri() . '/assets/css/xfolio-style.css');
-	wp_enqueue_style( 'xfolio-main', get_template_directory_uri() . '/assets/css/main.css', array(), _S_VERSION);
-	// wp_style_add_data( 'xfolio-style', 'rtl', 'replace' );
+	// Enqueue styles in the correct order
+	wp_enqueue_style('xfolio-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_enqueue_style('xfolio-custom', get_template_directory_uri() . '/assets/css/xfolio-style.css', array('xfolio-style'));
+	wp_enqueue_style('xfolio-main', get_template_directory_uri() . '/assets/css/main.css', array('xfolio-custom'), _S_VERSION);
 
+	// Scripts
 	wp_enqueue_script('jquery');
-	wp_enqueue_script( 'xfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), _S_VERSION, true );
-	wp_enqueue_script('exfolio-script', get_template_directory_uri() . '/assets/js/xfolio.js', ['jquery'], true);
-	wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/js/main.js');
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script('xfolio-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), _S_VERSION, true);
+	wp_enqueue_script('xfolio-script', get_template_directory_uri() . '/assets/js/xfolio.js', array('jquery'), _S_VERSION, true);
+	wp_enqueue_script('main-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), _S_VERSION, true);
+
+	if (is_singular() && comments_open() && get_option('thread_comments')) {
+		wp_enqueue_script('comment-reply');
 	}
+
+	// Remove any existing dynamic styles action and add with high priority
+	remove_action('wp_head', 'xfolio_output_dynamic_styles');
+	add_action('wp_head', 'xfolio_output_dynamic_styles', 100);
 }
-add_action( 'wp_enqueue_scripts', 'xfolio_scripts' );
+add_action('wp_enqueue_scripts', 'xfolio_scripts');
 
 
 /**
@@ -217,6 +223,6 @@ function xfolio_load_portfolio() {
 add_action('wp_ajax_xfolio_load_portfolio', 'xfolio_load_portfolio');
 add_action('wp_ajax_nopriv_xfolio_load_portfolio', 'xfolio_load_portfolio');
 
-
-
+// Add this line to include dynamic styles
+require_once get_template_directory() . '/inc/dynamic-styles.php';
 

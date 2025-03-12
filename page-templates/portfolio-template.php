@@ -37,7 +37,7 @@ get_header();
                             <div class="xfolio-portfolio-item-inner">
                                 <?php if (has_post_thumbnail()) : ?>
                                     <div class="xfolio-portfolio-thumbnail">
-                                        <a href="<?php the_permalink(); ?>" class="xfolio-portfolio-link">
+                                        <a href="<?php echo add_query_arg('portfolio', get_the_ID(), get_permalink()); ?>" class="xfolio-portfolio-link">
                                             <?php the_post_thumbnail('large'); ?>
                                         </a>
                                     </div>

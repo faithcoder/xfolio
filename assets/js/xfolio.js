@@ -15,13 +15,17 @@ jQuery(document).ready(function($) {
 
     // Portfolio panel handling
     function initXfolioPortfolio() {
-        // Open panel when portfolio item is clicked
-        $(document).on('click', '.xfolio-portfolio-link', function(e) {
-            e.preventDefault();
-            var url = $(this).attr('href');
-            var postId = $(this).closest('article').data('post-id');
-            
-            // Show loading state and activate overlay
+        // Check for portfolio parameter in URL
+        function checkForPortfolioInUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const portfolioId = urlParams.get('portfolio');
+            if (portfolioId) {
+                loadPortfolioContent(portfolioId);
+            }
+        }
+
+        // Load portfolio content
+        function loadPortfolioContent(postId) {
             $('.xfolio-portfolio-overlay').addClass('active');
             $('.xfolio-portfolio-panel-inner').html('<div class="xfolio-loading">Loading</div>');
             $('.xfolio-portfolio-panel').addClass('active');
@@ -60,49 +64,59 @@ jQuery(document).ready(function($) {
                         `;
                         
                         $('.xfolio-portfolio-panel-inner').html(portfolioContent);
-                        history.pushState({}, '', url);
-                    } else {
-                        throw new Error('Invalid response');
                     }
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.error('AJAX Error:', textStatus, errorThrown);
+                error: function() {
                     $('.xfolio-portfolio-panel-inner').html(
                         '<button class="xfolio-close-panel">&times;</button>' +
-                        '<div class="xfolio-error">Failed to load content. Please try again.</div>'
+                        '<div class="xfolio-error">Failed to load content</div>'
                     );
                 }
             });
+        }
+
+        // Open panel when portfolio item is clicked
+        $(document).on('click', '.xfolio-portfolio-link', function(e) {
+            e.preventDefault();
+            var postId = $(this).closest('article').data('post-id');
+            var currentUrl = window.location.href.split('?')[0];
+            var newUrl = currentUrl + '?portfolio=' + postId;
+            
+            loadPortfolioContent(postId);
+            
+            // Update URL without refreshing
+            history.pushState({}, '', newUrl);
         });
 
         function closeXfolioPanel() {
             $('.xfolio-portfolio-panel').removeClass('active');
             $('.xfolio-portfolio-overlay').removeClass('active');
             $('body').css('overflow', '');
-            history.pushState({}, '', window.location.pathname);
+            // Remove portfolio parameter from URL
+            var currentUrl = window.location.href.split('?')[0];
+            history.pushState({}, '', currentUrl);
         }
 
-        // Close panel when close button is clicked
-        $(document).on('click', '.xfolio-close-panel', function() {
-            closeXfolioPanel();
-        });
-
-        // Close panel when clicking on overlay
-        $('.xfolio-portfolio-overlay').on('click', function() {
-            closeXfolioPanel();
-        });
-
-        // Handle escape key
+        // Close panel handlers
+        $(document).on('click', '.xfolio-close-panel', closeXfolioPanel);
+        $('.xfolio-portfolio-overlay').on('click', closeXfolioPanel);
         $(document).keyup(function(e) {
-            if (e.key === "Escape") {
+            if (e.key === "Escape") closeXfolioPanel();
+        });
+
+        // Handle browser back/forward
+        $(window).on('popstate', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const portfolioId = urlParams.get('portfolio');
+            if (portfolioId) {
+                loadPortfolioContent(portfolioId);
+            } else {
                 closeXfolioPanel();
             }
         });
 
-        // Handle browser back button
-        $(window).on('popstate', function() {
-            closeXfolioPanel();
-        });
+        // Check for portfolio in URL on page load
+        checkForPortfolioInUrl();
     }
 
     // Initialize portfolio functionality

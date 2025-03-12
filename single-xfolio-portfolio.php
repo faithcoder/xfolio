@@ -3,7 +3,19 @@
  * The template for displaying single portfolio items
  */
 
-get_header();
+// Check if it's an AJAX request
+if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+    // If AJAX, just return the content
+    get_header(null, ['is_ajax' => true]);
+} else {
+    // If direct visit, redirect to portfolio page with portfolio parameter
+    $portfolio_page = get_page_by_path('portfolio');
+    if ($portfolio_page) {
+        wp_redirect(get_permalink($portfolio_page->ID) . '?portfolio=' . get_the_ID());
+        exit;
+    }
+}
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -45,4 +57,7 @@ get_header();
 </article>
 
 <?php
-get_footer(); ?> 
+if (!isset($_SERVER['HTTP_X_REQUESTED_WITH'])) {
+    get_footer();
+}
+?> 

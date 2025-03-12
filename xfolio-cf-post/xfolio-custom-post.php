@@ -124,6 +124,8 @@ function xfolio_register_taxonomies() {
 }
 add_action('init', 'xfolio_register_taxonomies');
 
+
+
 // Register Custom Post Type for Experience
 function exfolio_register_experience_post_type() {
     $labels = [
